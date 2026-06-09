@@ -29,23 +29,36 @@ Interface Overlap Analysis: Reads flat .dat files detailing interacting pairs an
 
 
 Usage Instructions:
-Step 1: Environment Setup
+Step 1: 
+Environment Setup
 Run the first block to execute !pip install biopython to ensure structural parsing dependencies are met.
-Step 2: Upload PDB File
+
+Step 2: 
+Upload PDB File
 Execute the file upload cell. When prompted by the Colab widget, upload your target .pdb file. The program will initialize the parser and output a hierarchy of the models, chains, and atomic coordinates.
-Step 3: Calculate Distances
+
+Step 3: 
+Calculate Distances
 Run the respective distance calculation cells depending on your analytical needs. You can manually adjust the chain_id_protein1 and chain_id_protein2 variables in the code blocks to target specific chains 
 (e.g., 'A' and 'B').
-Step 4: Upload Interaction Data
+
+Step 4: 
+Upload Interaction Data
 Execute the second file upload cell to input your interface data (e.g., FGFR1_InterfaceOverlap.dat).
-Step 5: Analyze Interface Overlap
+
+Step 5: 
+Analyze Interface Overlap
 Run the final Pandas and looping cells. The code utilizes delim_whitespace=True to parse the flat file regardless of spacing inconsistencies. It will cross-reference the interaction nodes (columns 'I' and 'J') 
 and print a binary matrix indicating overlap status (1 for overlap, 0 for no overlap).
 
 
-Notes and TroubleshootingData Formatting: 
+Notes and Troubleshooting
+
+Data Formatting: 
 If the Pandas parser encounters errors with your .dat file, verify that the file contains consistent columns without trailing unstructured text.
+
 Heavy Computations:
+
 Calculating the distance from every atom in Chain A to every atom in Chain B has a time complexity of O(N*M). 
 For very large macro-complexes, extracting Cα distances (Cell 6) or specific residue distances (Cell 5) is significantly faster than the all-atom approach.
 
@@ -76,33 +89,39 @@ Similarity: A float representing the Jaccard similarity score between cell type 
 
 Core Workflow:
 1. Data Ingestion
+
 Uses Colab's files.upload() widget to import the .dat file.
 Parses the file using pandas.read_csv() with flexible whitespace delimiting to gracefully handle irregular spacing.
 
 2. Graph Construction
+
 Initializes a networkx Graph object.
 Iterates through the data to establish nodes and edges.
 Filtering Threshold: By default, only cell type pairs with a Similarity > 0.25 are added as 
 connected edges in the graph, with the similarity score serving as the edge weight.
 
 3. Community Detection (Weighted CNM Algorithm)
+
 The script implements a custom version of the Clauset-Newman-Moore algorithm:
 Initialization: Every node starts in its own isolated community.
 Modularity Optimization ($Q$): Evaluates potential community merges by calculating the change in network modularity. The custom modularity_weighted function accounts for the continuous edge weights rather than just binary connections.
 Agglomeration: Iteratively merges the pair of communities that yields the highest increase in modularity until no further improvement can be made.
 
 4. Visualization
+
 Generates a 2D network plot using matplotlib and networkx.draw().
 Nodes are represented as sky-blue circles with bold labels, visually mapping the highly similar (>0.25) cell interactions.
 
 
-Usage Instructions
+Usage Instructions:
+
 Run the initial cell to trigger the upload widget and select your PPICellAdhesion_InterCellType_JaccardSimilarity.dat file.
 Execute the Pandas parsing cell to format the arrays.
 Run the main executable block to build the network, compute the CNM communities, and print the community cluster assignments to the console.
 Run the final block to render the topological visualization of the network.
 
-Customization
+Customization:
+
 Threshold Adjustment: 
 To analyze weaker or stronger interaction networks, modify the if similarity > 0.25: line in the graph generation loops.
 Modularity Tuning:
