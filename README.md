@@ -1,3 +1,10 @@
+
+This repository contains two complementary Python-based toolkits designed for Google Colab and Jupyter Notebook environments to support computational analysis of protein structure interactions and cell-type interaction networks. The Protein Structure Distance and Interface Analysis Toolkit uses Biopython and Pandas to parse PDB files, calculate atom-, residue-, and chain-level distance metrics, and evaluate overlap between protein interaction interfaces. The Cell Type Interaction Network & Community Detection Toolkit processes pairwise Jaccard similarity data to construct weighted interaction graphs, identify communities using a customized weighted Clauset-Newman-Moore algorithm, and visualize highly similar cell-type interaction networks. Together, these tools provide a flexible workflow for investigating molecular interfaces, interaction overlap, and higher-order network organization across biological systems.
+
+
+<img width="335" height="438" alt="toolkit1" src="https://github.com/user-attachments/assets/1d6b0a9a-6e8a-4317-a421-d413262c8073" />
+
+
 Protein Structure Distance and Interface Analysis Toolkit
 
 Description
@@ -43,6 +50,8 @@ Calculating the distance from every atom in Chain A to every atom in Chain B has
 For very large macro-complexes, extracting Cα distances (Cell 6) or specific residue distances (Cell 5) is significantly faster than the all-atom approach.
 
 
+<img width="356" height="391" alt="toolkit2" src="https://github.com/user-attachments/assets/876ac6c3-fdc0-4d3b-8a28-f7151a4ec175" />
+
 
 Cell Type Interaction Network & Community Detection Toolkit
 
@@ -65,7 +74,7 @@ J: The integer ID of the second cell type.
 Similarity: A float representing the Jaccard similarity score between cell type I and cell type J.
 
 
-Core Workflow1:
+Core Workflow:
 1. Data Ingestion
 Uses Colab's files.upload() widget to import the .dat file.
 Parses the file using pandas.read_csv() with flexible whitespace delimiting to gracefully handle irregular spacing.
