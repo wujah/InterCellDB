@@ -14,7 +14,7 @@ Both notebooks use Google Colab file-upload widgets. Google Colab is the simples
 
 ## Protein structure distance and interface analysis
 
-**Notebook:** `CalculateProteinInterfaceNew.ipynb`
+**Notebook:** `CalculateProteinInterface_withComments.ipynb`
 
 <img width="335" height="438" alt="Protein structure distance and interface analysis workflow" src="https://github.com/user-attachments/assets/1d6b0a9a-6e8a-4317-a421-d413262c8073" />
 
@@ -132,7 +132,7 @@ Shared contact residues suggest interface overlap but do not prove competitive b
 
 ## Cell–cell interface network and community detection
 
-**Notebook:** `InterCellDB.ipynb`
+**Notebook:** `InterCellDB_withComments.ipynb`
 
 <img width="356" height="391" alt="Cell–cell interface similarity network workflow" src="https://github.com/user-attachments/assets/876ac6c3-fdc0-4d3b-8a28-f7151a4ec175" />
 
